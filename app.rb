@@ -7,6 +7,8 @@ Bundler.require
 
 disable :protection
 
+ACCESS_TOKEN = 'AAACEdEose0cBAHo46uzBLMJZAf2zn69tSnj37s1vfQFvPUmEjjBOkt1bi4KOHwYR4CgY1LG76RFKg2MvEXPR3T8AfdAzkjxLcxwHBcAZDZD'
+
 def hello_photos(id)
 	api_url = "https://graph.facebook.com/#{id}/photos"
 	wall_photos = HTTParty.get(api_url)
@@ -19,35 +21,28 @@ def hello_photos(id)
 		l = Time.iso8601(j)
 		@k << wall_photos['data'][i]['images'][3]['source']
 		i += 1
-		puts @k
 	end until l < last_week
 end
-
-ACCESS_TOKEN = 'AAACEdEose0cBANJfZCZBmZAVydHRkX6BSqwezQDFsDFKEw4VQL47XmDr70ogS5j1aZACDThpbvAzDZAXUbyYKZBQj6Ssg0lv0qzZAjUnTNQlwZDZD'
 
 def event(id)
 	event_url = "https://graph.facebook.com/#{id}/events?access_token=#{ACCESS_TOKEN}"
 	events_object = HTTParty.get(event_url)
 	today = Time.now
-
 	i=0
 
 	begin
-		a = Time.iso8601(events_object['data'][i]['start_time'])
-		picture_id = events_object['data'][i]['id']
-		@k << "https://graph.facebook.com/#{picture_id}/picture?type=large"
+		eventModel = {}
+		eventModel['start_date'] = Time.iso8601(events_object['data'][i]['start_time'])
+		eventModel['picture_id'] = events_object['data'][i]['id']
+		eventModel['picture_url'] = "https://graph.facebook.com/#{eventModel['picture_id']}/picture?type=large"
+		@k << eventModel
+		remaining = events_object['data'].count - i
 		i += 1
-		puts picture_id
-		puts i
-	end until a < today
+	end until eventModel['start_date'] < today or remaining == 0
 end
 
 get '/' do
-	@k = []
-	event('PURELASVEGAS')
-	#event('xslasvegas')
-	#event('RainLasVegas')
-	slim :index
+	slim :home
 end
 
 get '/las-vegas' do
@@ -55,13 +50,24 @@ get '/las-vegas' do
 	event('PURELASVEGAS')
 	event('xslasvegas')
 	event('RainLasVegas')
+	@k.to_json
 	slim :index
+end
+
+get '/api/las-vegas' do
+	@k = []
+	event('PURELASVEGAS')
+	event('xslasvegas')
+	event('RainLasVegas')
+	@k.to_json
 end
 
 get '/nyc' do
 	@k = []
 	event('pachanyc')
-	#event('4040Club')
+	event('4040Club')
 	#event('AmnesiaNYC')
+	hello_photos('AmnesiaNYC')
 	slim :index
 end
+
