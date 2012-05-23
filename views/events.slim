@@ -1,0 +1,69 @@
+doctype html
+html
+	head
+		title Local Nightly
+
+		link href='styles.css' media='screen' rel='stylesheet' type='text/css'
+		script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAkLx7fUJYXSylpbS9gtEMRQYdWaWGpGmY&sensor=false"
+		script type="text/javascript" src="javascripts/jquery.min.js"
+		script type="text/javascript" src="javascripts/underscore.js"
+		script type="text/javascript" src="javascripts/backbone.js"
+		
+	body
+		img#logo src="images/logo7.png"
+
+		/-@k.each do |p|
+			/=p
+			/img src=p['picture_url']
+		/=@k.inspect
+		#container
+
+		#sidebar
+			#sideheader
+				a#today href="#" Todays
+				br
+				a#next href="#" Next Events
+				br
+				a#all href="#" All Events
+			#content
+		#map
+			#map_header
+				span#picture
+				br
+				span#id
+				br
+				span#startdate
+				br
+				span#name
+				br
+				span#link
+				br
+				span#desc
+				br
+				span#lat
+				br
+				span#long
+				br
+				span#venueid
+			#map_canvas
+
+		#fixed
+			span#picture
+			br
+			span#id
+			br
+			span#startdate
+			br
+			span#name
+			br
+			span#link
+			br
+			span#desc
+			br
+			span#lat
+			br
+			span#long
+			br
+			span#mapview
+
+		script type="text/javascript" src="javascripts/application.js"

@@ -1,10 +1,89 @@
+html{
+	height: 100%;
+}
 body{
 	background: #000;
-	color: #FFF;
+	//color: #FFF;
+	height: 100%;
+	margin: 0;
+	padding: 0;
 }
 
 #logo{
 	position: fixed;
 	bottom: 40px;
 	right: 40px;
+	z-index: 2;
+}
+
+#container{
+	float: left;
+	height: 270px;
+	position: absolute;
+	bottom: 0;
+	z-index: 1000;
+}
+
+li{
+	float: left;
+	list-style: none;
+}
+
+#fixed{
+	//width: 100%;
+	width: 0;
+	height: 100%;
+	position: fixed;
+	background: #000000;
+	bottom: 0;
+	left: 0;
+	z-index: 10001;
+	opacity: 0;
+	white-space: nowrap;
+	position: absolute;
+	left: 0;
+}
+
+#sidebar{
+	width: 33%;
+	height: 100%;
+	float: left;
+	background: #111;
+	overflow: hidden;
+	color: #FFFFFF;
+}
+
+#sidebar:hover{
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+#map{
+	float: left;
+	height: 100%;
+	width: 67%;
+}
+
+#map_canvas{
+	height: 100%;
+	width: 100%;
+}
+
+#map_header{
+	position: fixed;
+	//height: 100px;
+	width: 100%;
+	//background: #000;
+	top: 0;
+	z-index: 1;
+	//opacity: 0.5;
+	display: none;
+}
+
+#sideheader{
+	position: fixed;
+	height: 100px;
+	width: 100%;
+	background: #000;
+	float: left;
 }

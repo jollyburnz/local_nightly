@@ -12,6 +12,7 @@ GEM
     httparty (0.8.3)
       multi_json (~> 1.0)
       multi_xml
+    json (1.7.0)
     multi_json (1.3.4)
     multi_xml (0.4.4)
     rack (1.4.1)
@@ -37,6 +38,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-script
   httparty
+  json
   sinatra
   slim
   thin

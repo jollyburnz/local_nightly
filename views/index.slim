@@ -4,7 +4,10 @@ html
 		title Local Nightly
 
 		link href='styles.css' media='screen' rel='stylesheet' type='text/css'
+
+		script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAkLx7fUJYXSylpbS9gtEMRQYdWaWGpGmY&sensor=false"
 		script type="text/javascript" src="javascripts/jquery.min.js"
+		script type="text/javascript" src="javascripts/jquery-ui.js"
 		script type="text/javascript" src="javascripts/underscore.js"
 		script type="text/javascript" src="javascripts/backbone.js"
 		
@@ -15,6 +18,10 @@ html
 			/=p
 			/img src=p['picture_url']
 		/=@k.inspect
-		#container
+		#dialog
+			select#where
+				option value="" CHOOSE
+				option value="nyc" NYC
+				option value="lasvegas" Las Vegas
 
 		script type="text/javascript" src="javascripts/application.js"

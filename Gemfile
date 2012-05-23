@@ -4,6 +4,7 @@ gem 'sinatra'
 gem 'slim'
 gem 'httparty'
 gem 'thin'
+gem 'json'
 
 group :development do
 	gem 'coffee-script'
